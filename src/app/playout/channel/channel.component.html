@@ -1,0 +1,17 @@
+<p>{{channel}}</p>
+
+<div class="flex" (contextmenu)="onRightClick($event)">
+    <div #app cdkDrag>
+        <app-playlist (mousedown)="setActivePlaylist('app')" [playlist]="playlist" [channel]="channel" [type]="'onAir'"
+            (copyOrCutArr)="receiveDataForCutCopy($event)" (position)="receivePostionForPaste($event)"
+            (pasteC)="paste()"></app-playlist>
+    </div>
+    <div #rev cdkDrag>
+
+        <app-playlist (mousedown)="setActivePlaylist('rev')" [playlist]=" review" [channel]="channel" [type]="'review'"
+            (copyOrCutArr)="receiveDataForCutCopy($event)" (position)="receivePostionForPaste($event)"
+            (pasteC)="paste()">
+        </app-playlist>
+
+    </div>
+</div>

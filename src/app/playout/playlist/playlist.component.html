@@ -1,0 +1,72 @@
+<div #chat class="flex">
+
+    <div class="container" id='chat' [style.top.px]='y' [style.left.px]='x' [style.width.px]='width'
+        [style.height.px]='height'>
+        <div>
+            <div class="title">{{channel}} {{type}} </div>
+            <mat-list style="padding-top: 1px;  " *ngFor="let key of objectKeys; let i = index"
+                (contextmenu)="onRightClick($event)">
+
+                <mat-list-item tabindex="1" (click)="mark(key, $event, i)"
+                    (contextmenu)="onContextMenu($event, item); mark(key, $event, i)" class="border"
+                    [ngStyle]="{'background-color': markedKey.indexOf(key)!=-1 ? '#52697E' : '#3F3F3F' }"
+                    style=" height: 30px;">
+
+                    <mat-icon matListIcon *ngIf="playlist[key].a!='empty'">folder</mat-icon>
+
+                    <p *ngIf="playlist[key].a!='empty'" matLine>
+                        <!-- <span class="span">2</span> -->
+                        <span> {{playlist[key].startTime}}</span>
+                        <span> -- {{playlist[key].duration}} </span>
+                        <span> -- {{playlist[key].file}} </span>
+                        <button *ngIf="playlist[key].a!='empty'" mat-icon-button
+                            aria-label="Example icon button with a vertical three dot icon">
+                            <mat-icon (click)="edit()">edit</mat-icon>
+                        </button>
+                        <!-- <mat-progress-bar [value]="value">
+                </mat-progress-bar> -->
+                    </p>
+
+                </mat-list-item>
+                <!-- <div *ngIf="open == true ">
+        <app-edit-form-event [data]="event"></app-edit-form-event>
+    </div> -->
+
+
+            </mat-list>
+            <div #help [style.left.px]='leftdiv' id='help'></div>
+            <div #corner [style.bottom.px]='bottom' [style.left.px]='leftdiv' [style.height.px]="heigthdiv"
+                (mousedown)='onCornerClick($event, bottomRightResize)' id='chat-bottom-right-resize'
+                class='chat-corner-resize'></div>
+        </div>
+
+        <div (mousedown)='onCornerClick($event, topLeftResize)' id='chat-top-left-resize' class='chat-corner-resize'>
+        </div>
+        <div (mousedown)='onCornerClick($event, topRightResize)' id='chat-top-right-resize' class='chat-corner-resize'>
+        </div>
+        <div (mousedown)='onCornerClick($event, bottomLeftResize)' id='chat-bottom-left-resize'
+            class='chat-corner-resize'>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+<div style="visibility: hidden; position: fixed" [style.left]="contextMenuPosition.x"
+    [style.top]="contextMenuPosition.y" [matMenuTriggerFor]="contextMenu">
+</div>
+
+<mat-menu #contextMenu="matMenu" (contextmenu)="onRightClick($event)">
+    <ng-template matMenuContent let-item="item">
+        <button mat-menu-item (click)="cut()" (contextmenu)="onRightClick($event)">Cut</button>
+        <button mat-menu-item (click)="copy()" (contextmenu)="onRightClick($event)">Copy</button>
+        <button mat-menu-item (click)="remove()" (contextmenu)="onRightClick($event)">Delete</button>
+        <button mat-menu-item (click)="paste()" (contextmenu)="onRightClick($event)"
+            [disabled]="copyOrCutArr ==0?true: false">Paste
+        </button>
+    </ng-template>
+</mat-menu>

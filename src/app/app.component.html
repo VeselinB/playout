@@ -1,0 +1,6 @@
+<div style="display: flex; flex-direction: row; margin-bottom: 10px; " class="none">
+  <div style="margin-right: 3px;" *ngFor="let channel of channels">
+    <button routerLink="/playout/{{channel}}" mat-raised-button color="primary">{{channel}}</button>
+  </div>
+</div>
+<router-outlet></router-outlet>

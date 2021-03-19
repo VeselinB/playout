@@ -1,0 +1,92 @@
+
+.flex{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-evenly; */
+}
+
+.border{
+    color: #EDEDED;
+ 
+    border-bottom: none;
+    border-width: 0.001em;
+    /* height: 20px; */
+}
+.span{
+    background-color: green;
+}
+
+.container{
+
+    border-bottom: 0.1em solid white;
+    border-left: 0.1em solid white;
+    border-right: 0.1em solid white;
+ 
+    background-color:#8A8A8A;
+  
+    
+/* height:  820px; */
+ /* height:900px; */
+  overflow: auto;
+}
+.title{
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    z-index: 10;
+   padding-top: 1px;  background-color: #5587B1; height: 100px; -webkit-box-shadow: -1px 9px 18px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 9px 18px 0px rgba(0,0,0,0.75);
+    box-shadow: -1px 9px 18px 0px rgba(0,0,0,0.75);
+    border-top: 0.1em solid white;
+    border-left: 0.1em solid white;
+    border-right: 0.1em solid white;
+
+}
+
+#chat {
+    position: fixed;
+    /* background-color: black; */
+    /* opacity: 0.8; */
+}
+
+.chat-corner-resize {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    cursor: all-scroll;
+    
+}
+
+#chat-top-left-resize {
+    top: 0px;
+    left: 0px;
+}
+
+#chat-top-right-resize {
+    top: 0px;
+    right: 0px;
+}
+
+#chat-bottom-left-resize {
+    bottom: 0px;
+    left: 0px;
+}
+ #help{
+    position: sticky;
+    bottom: 0px;
+    right: 0px;
+    width: 0px;
+  
+    left: auto;
+ }
+#chat-bottom-right-resize {
+    position: sticky;
+    bottom: 0px;
+    right: 0px;
+    width: 0px;
+  
+    left: auto;
+    border-bottom: 20px solid white;
+    border-left: 20px solid transparent;
+}
+
